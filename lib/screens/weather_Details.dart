@@ -8,6 +8,8 @@ class WeatherDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double horizontalPadding = 16.0;
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -21,21 +23,26 @@ class WeatherDetails extends StatelessWidget {
           child: Scaffold(
             backgroundColor: Colors.transparent,
             body: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  
                   const SizedBox(
                     height: 50,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        ' ${weatherData.location.name},\n${weatherData.location.region},\n${weatherData.location.country}',
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 30),
-                        textAlign: TextAlign.center,
+                      Flexible(
+                        child: Text(
+                          ' ${weatherData.location.name}, ${weatherData.location.region}, ${weatherData.location.country}',
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 30),
+                          textAlign: TextAlign.center,
+                          softWrap: true,
+                        ),
                       ),
                     ],
                   ),
@@ -63,12 +70,13 @@ class WeatherDetails extends StatelessWidget {
                       style:
                           const TextStyle(color: Colors.black, fontSize: 25)),
                   const SizedBox(
-                    height: 200,
+                    height: 300,
                   ),
-                  Text(
+                  
+                 Flexible(child: Text(
                     ' ${weatherData.location.localTime}',
                     style: const TextStyle(fontSize: 20),
-                  ),
+                  ),) 
                 ],
               ),
             ),
